@@ -1,0 +1,26 @@
+.guess {
+  display: flex;
+  column-gap: 10px;
+}
+
+.word {
+  font-size: x-large;
+  flex-grow: 1;
+  text-align: center;
+  justify-content: space-evenly;
+  color: lightgray;
+  border: 1px solid darkgray;
+  border-radius: 2px;
+}
+
+.word > div.correct {
+  background-color: #538d4e;
+}
+
+.word > div.present {
+  background-color: #b59f3b;
+}
+
+.word > div.wrong {
+  background-color: #3a3a3c;
+}
