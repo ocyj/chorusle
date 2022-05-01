@@ -2,16 +2,17 @@ import React from "react";
 import "./Guess.css";
 
 interface GuessProps {
-  guess: string;
+  guess: Array<string>;
+  statuses: Array<string>;
 }
 
-function Guess({ guess }: GuessProps) {
+function Guess({ guess, statuses }: GuessProps) {
   return (
     <div className="guess">
-      {guess.split(" ").map((word) => (
+      {statuses.map((status, idx) => {
         // Set status to one of [correct, present, wrong]
-        <Word key={word} guess={word} status="correct" />
-      ))}
+        return <Word key={idx} guess={guess[idx]} status={status} />;
+      })}
     </div>
   );
 }
