@@ -4,6 +4,7 @@ enum GuessStatus {
   Correct = "correct",
   Wrong = "wrong",
   Missplaced = "missplaced",
+  Empty = "empty",
 }
 
 function checkGuess(answer: string, guess: string): Array<GuessStatus> {
