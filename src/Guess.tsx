@@ -1,9 +1,10 @@
 import React from "react";
 import "./Guess.css";
+import { GuessStatus } from "./utils";
 
 interface GuessProps {
   guess: Array<string>;
-  statuses: Array<string>;
+  statuses: Array<GuessStatus>;
 }
 
 function Guess({ guess, statuses }: GuessProps) {
