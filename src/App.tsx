@@ -5,11 +5,7 @@ import Chorusle from "./Chorusle";
 
 function App() {
   const answer = "One Two Three Four";
-  const guesses = [
-    "Five Six Seven Eight",
-    "one three two four",
-    "one two four three",
-  ];
+  const guesses: Array<string> = [];
 
   return (
     <>
