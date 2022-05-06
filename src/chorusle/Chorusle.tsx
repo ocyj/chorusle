@@ -1,9 +1,10 @@
-import _ from "lodash";
 import { useState } from "react";
-import GuessList from "./chorusle/GuessList";
+import _ from "lodash";
+
+import GuessList from "./GuessList";
 import InputGuess from "./InputGuess";
 import checkGuess from "./utils";
-import GuessStatus from "./chorusle/GuessStatusEnum";
+import GuessStatus from "./GuessStatusEnum";
 
 interface ChorusleProps {
   answer: string;

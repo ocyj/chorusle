@@ -1,5 +1,5 @@
-import { GuessStatus } from "../utils";
-import Guess from "../Guess";
+import GuessStatus from "./GuessStatusEnum";
+import Guess from "./Guess";
 
 interface GuessListProps {
   numGuessesAllowed: number;

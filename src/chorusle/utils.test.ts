@@ -1,4 +1,4 @@
-import { GuessStatus } from "./utils";
+import GuessStatus from "./GuessStatusEnum";
 import checkGuess from "./utils";
 
 const c = GuessStatus.Correct;

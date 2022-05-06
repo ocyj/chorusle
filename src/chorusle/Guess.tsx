@@ -1,6 +1,5 @@
-import React from "react";
 import "./Guess.css";
-import { GuessStatus } from "./utils";
+import GuessStatus from "./GuessStatusEnum";
 
 interface GuessProps {
   guess: Array<string>;

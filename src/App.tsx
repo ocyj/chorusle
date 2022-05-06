@@ -1,7 +1,5 @@
-import React from "react";
-import logo from "./logo.svg";
+import Chorusle from "./chorusle/Chorusle";
 import "./App.css";
-import Chorusle from "./Chorusle";
 
 function App() {
   const answer = "One Two Three Four";

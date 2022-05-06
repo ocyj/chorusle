@@ -1,5 +1,5 @@
 import _ from "lodash";
-import GuessStatus from "./chorusle/GuessStatusEnum";
+import GuessStatus from "./GuessStatusEnum";
 
 function checkGuess(answer: string, guess: string): Array<GuessStatus> {
   const answerList = answer.split(" ");
@@ -63,4 +63,3 @@ function setDifference<T>(setA: Set<T>, setB: Set<T>): Set<T> {
 }
 
 export default checkGuess;
-export { GuessStatus };
