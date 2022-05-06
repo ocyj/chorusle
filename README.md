@@ -1,3 +1,5 @@
 # README: Chorusle
 
-Wordle for chorus lines. Created with create-react-app.
+It's like Wordle but for 🎵 choruses 🎵 lines!
+
+Created with create-react-app.
