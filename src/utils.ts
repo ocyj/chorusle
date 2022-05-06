@@ -1,11 +1,5 @@
 import _ from "lodash";
-
-enum GuessStatus {
-  Correct = "correct",
-  Wrong = "wrong",
-  Missplaced = "missplaced",
-  Empty = "empty",
-}
+import GuessStatus from "./chorusle/GuessStatusEnum";
 
 function checkGuess(answer: string, guess: string): Array<GuessStatus> {
   const answerList = answer.split(" ");

@@ -1,53 +1,48 @@
-import exp from "constants";
-import React, { useState } from "react";
-import Guess from "./Guess";
+import _ from "lodash";
+import { useState } from "react";
+import GuessList from "./chorusle/GuessList";
 import InputGuess from "./InputGuess";
-import checkGuess, { GuessStatus } from "./utils";
+import checkGuess from "./utils";
+import GuessStatus from "./chorusle/GuessStatusEnum";
 
 interface ChorusleProps {
   answer: string;
-  initialGuesses: Array<string>;
   numGuessesAllowed: number;
 }
 
-function Chorusle({
-  answer,
-  initialGuesses,
-  numGuessesAllowed,
-}: ChorusleProps) {
-  const [guesses, setGuesses] = useState(initialGuesses);
+function Chorusle({ answer, numGuessesAllowed }: ChorusleProps) {
+  const [guesses, setGuesses] = useState(new Array<string>());
   const correctAnswer = answer.toLowerCase();
   const numWordsAnswer = correctAnswer.split(" ").length;
 
   let statuses = guesses.map((guess) =>
     checkGuess(correctAnswer, guess.toLowerCase())
   );
-  let guessesToRender = [...guesses];
 
-  const numGuessesLeft = numGuessesAllowed - guesses.length;
-  if (numGuessesLeft > 0) {
-    const unmadeGuess = Array(numWordsAnswer).fill("\0").join(" ");
-    const unmadeGuessStatus = Array(numWordsAnswer).fill(GuessStatus.Empty);
+  let chorusleBody;
 
-    const restOfUnmadeGuesses = Array(numGuessesLeft).fill(unmadeGuess);
-    const restOfUnmadeGuessesStatuses =
-      Array(numGuessesLeft).fill(unmadeGuessStatus);
-    guessesToRender = [...guessesToRender, ...restOfUnmadeGuesses];
-    statuses = [...statuses, ...restOfUnmadeGuessesStatuses];
+  if (
+    statuses.length > 0 &&
+    _.every(_.last(statuses), (status) => status === GuessStatus.Correct)
+  ) {
+    chorusleBody = <div style={{ color: "white" }}>U did good!</div>;
+  } else if (guesses.length === numGuessesAllowed) {
+    chorusleBody = <div style={{ color: "white" }}>Game Over</div>;
+  } else {
+    chorusleBody = (
+      <>
+        <GuessList
+          numGuessesAllowed={numGuessesAllowed}
+          numWordsAnswer={numWordsAnswer}
+          guesses={guesses}
+          statuses={statuses}
+        />
+        <InputGuess onGuess={(guess) => setGuesses((g) => [...g, guess])} />
+      </>
+    );
   }
 
-  return (
-    <>
-      {guessesToRender.map((guess, index, _) => (
-        <Guess
-          key={index}
-          guess={guess.split(" ")}
-          statuses={statuses[index]}
-        />
-      ))}
-      <InputGuess onGuess={(guess) => setGuesses((g) => [...g, guess])} />
-    </>
-  );
+  return <>{chorusleBody}</>;
 }
 
 export default Chorusle;
