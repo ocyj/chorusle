@@ -26,7 +26,7 @@ function InputGuess({ onGuess }: InputGuessProps) {
       return false;
     }
     // only allow letters and spaces:
-    return /^[A-Za-z\s]*$/.test(guess);
+    return /^[A-Za-z'\s]*$/.test(guess);
   }
 
   return (
